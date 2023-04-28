@@ -13,6 +13,23 @@ import {
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
+/**
+ * Directove to detect clicks outside of the current element
+ *
+ * ```typescript
+ * @Component({
+ *   selector: 'app',
+ *   template: `
+ *     <div (clickOutside)="onClickedOutside($event)">Click outside this</div>
+ *   `
+ * })
+ * export class AppComponent {
+ *   onClickedOutside(e: Event) {
+ *     console.log('Clicked outside:', e);
+ *   }
+ * }
+ * ```
+ */
 @Directive({
   selector: '[clickOutside]',
   standalone: true,
