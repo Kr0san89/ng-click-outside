@@ -7,9 +7,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-  cache:
-    paths:
-      - node_modules/
   build:
     runs-on: ubuntu-latest
 
