@@ -23,7 +23,10 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
-    - name: Build
+    - name: Build Lib
+      run: npm run build:lib
+
+    - name: Build Demo App
       run: npm run build:demo
 
     - name: Deploy 🚀
