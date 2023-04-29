@@ -1,4 +1,4 @@
-name: CI Angular
+name: Deploy Demo App
 
 on:
   push:
