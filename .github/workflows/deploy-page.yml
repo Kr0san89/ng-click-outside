@@ -1,8 +1,8 @@
-name: Publish NPM
+name: CI Angular
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ "master" ]
 
 jobs:
   cache:
@@ -27,9 +27,8 @@ jobs:
       run: npm ci
 
     - name: Build
-      run: npm run build:lib
+      run: npm run build:demo
 
-    - name: Publish
-      run: npm run publish:lib
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM }}
+    artifacts:
+      paths:
+        - dist/demo
