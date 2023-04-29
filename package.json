@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:demo": "ng build demo",
+    "build:demo": "ng build demo --base-href=/ng-click-outside/",
     "build:lib": "ng build ng-click-outside2 && cp README.md dist/ng-click-outside2",
     "publish:lib": "cd dist/ng-click-outside2 && npm publish",
     "publish:next:lib": "cd dist/ng-click-outside2 && npm publish --tag alpha",
