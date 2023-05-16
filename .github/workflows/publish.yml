@@ -8,17 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
     - uses: actions/checkout@v3
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '16.x'
 
     - name: Install Dependencies
       run: npm ci
@@ -27,6 +23,6 @@ jobs:
       run: npm run build:lib
 
     - name: Publish
-      run: npm run publish:lib
+      run: cd dist/ng-click-outside2 && npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM }}
