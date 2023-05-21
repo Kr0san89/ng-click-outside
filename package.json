@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "Angular directive for handling click events outside an element.",
   "author": "Eugene Cheung, Manuel Schmidt",
+  "homepage": "https://kr0san89.github.io/ng-click-outside/",
+  "bugs": {
+    "url": "https://github.com/Kr0san89/ng-click-outside/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
