@@ -5,6 +5,7 @@ import {By} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'test-click',
   standalone: true,
   imports: [NgClickOutsideDirective],
