@@ -3,6 +3,7 @@
 
 [![NPM](https://img.shields.io/npm/v/ng-click-outside2?color=orange&style=flat-square)](https://www.npmjs.com/package/ng-click-outside2)
 [![License](https://img.shields.io/github/license/Kr0san89/ng-click-outside?color=blue&style=flat-square)](https://github.com/Kr0san89/ng-click-outside/blob/master/LICENSE)
+[![Love Angular badge](https://img.shields.io/badge/angular-love-blue?logo=angular&angular=love)](https://www.github.com/angular/angular)
 
 Angular directive for handling click events outside an element.
 
@@ -31,11 +32,11 @@ npm install --save ng-click-outside2
 | 14,15,16 | 11.x.x  | `ng-click-outside2@^11.0.0` |
 | 16       | 12.x.x  | `ng-click-outside2@^12.0.0` |
 
-If you still use Angular <= 12 please use the original package. https://www.npmjs.com/package/ng-click-outside
+If you use Angular <= 12 please use the original package. https://www.npmjs.com/package/ng-click-outside
 
 ## Usage
 
-Add `NgClickOutsideDirective` to your list of module imports:
+Add `NgClickOutsideDirective` to your imports:
 
 ```typescript
 import {NgClickOutsideDirective} from 'ng-click-outside2';
