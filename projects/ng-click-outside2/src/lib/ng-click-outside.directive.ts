@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  inject,
   Inject,
   Input,
   NgZone,
@@ -12,6 +13,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import {NgClickOutsideExcludeToken} from "./ng-click-outside-exclude.directive";
 
 /**
  * Directove to detect clicks outside of the current element
@@ -60,20 +62,6 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
   @Input() emitOnBlur = false;
 
   /**
-   * A comma-separated string of DOM element queries to exclude when clicking outside of the element.
-   * For example: `[exclude]="'button,.btn-primary'"`.
-   */
-  @Input() exclude = '';
-  /**
-   * By default, `clickOutside` registers excluded DOM elements on init.
-   *
-   * This property refreshes the list before the `clickOutside` event is triggered. This is useful for ensuring that
-   * excluded elements added to the DOM after init are excluded (e.g. ng2-bootstrap popover: this allows for clicking
-   * inside the `.popover-content` area if specified in `exclude`).
-   */
-  @Input() excludeBeforeClick = false;
-
-  /**
    * A comma-separated list of events to cause the trigger.
    * ### For example, for additional mobile support:
    * `[clickOutsideEvents]="'click,touchstart'"`
@@ -85,7 +73,7 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
    */
   @Output() clickOutside: EventEmitter<Event> = new EventEmitter<Event>();
 
-  private _nodesExcluded: Array<HTMLElement> = [];
+  excludeDirective = inject(NgClickOutsideExcludeToken, {host: true, optional: true});
   private _events: Array<string> = ['click'];
 
   constructor(
@@ -108,7 +96,7 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['attachOutsideOnClick'] || changes['exclude'] || changes['emitOnBlur']) {
+    if (changes['attachOutsideOnClick'] || changes['emitOnBlur']) {
       this._init();
     }
   }
@@ -117,8 +105,6 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
     if (this.clickOutsideEvents !== '') {
       this._events = this.clickOutsideEvents.split(',').map(e => e.trim());
     }
-
-    this._excludeCheck();
 
     if (this.attachOutsideOnClick) {
       this._initAttachOutsideOnClickListener();
@@ -139,29 +125,13 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  private _excludeCheck() {
-    if (this.exclude) {
-      try {
-        const nodes = Array.from(this.document.querySelectorAll(this.exclude)) as Array<HTMLElement>;
-        if (nodes) {
-          this._nodesExcluded = nodes;
-        }
-      } catch (err) {
-        console.error('[ng-click-outside] Check your exclude selector syntax.', err);
-      }
-    }
-  }
 
   private _onClickBody(ev: Event) {
     if (!this.clickOutsideEnabled) {
       return;
     }
 
-    if (this.excludeBeforeClick) {
-      this._excludeCheck();
-    }
-
-    if (!this._el.nativeElement.contains(ev.target) && !this._shouldExclude(ev.target)) {
+    if (!this._el.nativeElement.contains(ev.target) && !this.excludeDirective?.isExclude(ev.target)) {
       this._emit(ev);
 
       if (this.attachOutsideOnClick) {
@@ -190,15 +160,6 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
     this._ngZone.run(() => this.clickOutside.emit(ev));
   }
 
-  private _shouldExclude(target: any): boolean {
-    for (let excludedNode of this._nodesExcluded) {
-      if (excludedNode.contains(target)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
 
   private _initClickOutsideListener() {
     this._ngZone.runOutsideAngular(() => {

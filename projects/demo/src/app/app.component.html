@@ -3,6 +3,7 @@
   (clickOutside)="onClickedOutside($event)"
   [attachOutsideOnClick]="attachOutsideOnClick"
   [clickOutsideEnabled]="enabled"
+  [clickOutsideExclude]="'.foo'"
   [emitOnBlur]="true">
   <p>Clicked inside: {{countInside}}</p>
   <p>Clicked outside: {{countOutside}}</p>
@@ -17,3 +18,4 @@
     <span>Enabled</span>
   </label>
 </div>
+<div class="foo" [style.height.px]="200"></div>
