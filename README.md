@@ -31,6 +31,7 @@ npm install --save ng-click-outside2
 | 13       | 10.x.x  | `ng-click-outside2@^10.0.0` |
 | 14,15,16 | 11.x.x  | `ng-click-outside2@^11.0.0` |
 | 16       | 12.x.x  | `ng-click-outside2@^12.0.0` |
+| 17       | 13.x.x  | `ng-click-outside2@^13.0.0` |
 
 If you use Angular <= 12 please use the original package. https://www.npmjs.com/package/ng-click-outside
 

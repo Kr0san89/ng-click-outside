@@ -1,4 +1,5 @@
 import {
+  afterNextRender,
   Directive,
   ElementRef,
   EventEmitter,
@@ -8,7 +9,6 @@ import {
   NgZone,
   OnChanges,
   OnDestroy,
-  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
@@ -36,7 +36,7 @@ import {NgClickOutsideExcludeToken} from "./ng-click-outside-exclude.directive";
   selector: '[clickOutside]',
   standalone: true,
 })
-export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
+export class NgClickOutsideDirective implements OnChanges, OnDestroy {
 
   /**
    * Enables directive.
@@ -83,10 +83,7 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
     this._initOnClickBody = this._initOnClickBody.bind(this);
     this._onClickBody = this._onClickBody.bind(this);
     this._onWindowBlur = this._onWindowBlur.bind(this);
-  }
-
-  ngOnInit() {
-    this._init();
+    afterNextRender(() => this._init())
   }
 
   ngOnDestroy() {
@@ -187,13 +184,13 @@ export class NgClickOutsideDirective implements OnInit, OnChanges, OnDestroy {
 
   private _initWindowBlurListener() {
     this._ngZone.runOutsideAngular(() => {
-      window.addEventListener('blur', this._onWindowBlur);
+      this.document.defaultView?.addEventListener('blur', this._onWindowBlur);
     });
   }
 
   private _removeWindowBlurListener() {
     this._ngZone.runOutsideAngular(() => {
-      window.removeEventListener('blur', this._onWindowBlur);
+      this.document.defaultView?.removeEventListener('blur', this._onWindowBlur);
     });
   }
 }
