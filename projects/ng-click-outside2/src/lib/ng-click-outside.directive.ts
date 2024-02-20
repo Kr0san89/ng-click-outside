@@ -4,7 +4,6 @@ import {
   ElementRef,
   EventEmitter,
   inject,
-  Inject,
   Input,
   NgZone,
   OnChanges,
@@ -74,12 +73,12 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
   @Output() clickOutside: EventEmitter<Event> = new EventEmitter<Event>();
 
   excludeDirective = inject(NgClickOutsideExcludeToken, {host: true, optional: true});
+  private _el = inject(ElementRef);
+  private _ngZone = inject(NgZone);
+  private document = inject<Document>(DOCUMENT);
   private _events: Array<string> = ['click'];
 
-  constructor(
-    private _el: ElementRef,
-    private _ngZone: NgZone,
-    @Inject(DOCUMENT) private document: Document) {
+  constructor() {
     this._initOnClickBody = this._initOnClickBody.bind(this);
     this._onClickBody = this._onClickBody.bind(this);
     this._onWindowBlur = this._onWindowBlur.bind(this);
