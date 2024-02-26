@@ -54,11 +54,6 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
    * This may help for items that are conditionally shown ([see issue #13](https://github.com/arkon/ng-click-outside/issues/13)).
    */
   @Input() delayClickOutsideInit = false;
-  /**
-   *  If enabled, emits an event when user clicks outside of applications' window while it's visible.
-   *  Especially useful if page contains iframes.
-   */
-  @Input() emitOnBlur = false;
 
   /**
    * A comma-separated list of events to cause the trigger.
@@ -81,14 +76,12 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
   constructor() {
     this._initOnClickBody = this._initOnClickBody.bind(this);
     this._onClickBody = this._onClickBody.bind(this);
-    this._onWindowBlur = this._onWindowBlur.bind(this);
     afterNextRender(() => this._init())
   }
 
   ngOnDestroy() {
     this._removeClickOutsideListener();
     this._removeAttachOutsideOnClickListener();
-    this._removeWindowBlurListener();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -106,10 +99,6 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
       this._initAttachOutsideOnClickListener();
     } else {
       this._initOnClickBody();
-    }
-
-    if (this.emitOnBlur) {
-      this._initWindowBlurListener();
     }
   }
 
@@ -136,18 +125,6 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
     }
   }
 
-  /**
-   * Resolves problem with outside click on iframe
-   * @see https://github.com/arkon/ng-click-outside/issues/32
-   */
-  private _onWindowBlur(ev: Event) {
-    setTimeout(() => {
-      if (!this.document.hidden) {
-        this._emit(ev);
-      }
-    });
-  }
-
   private _emit(ev: Event) {
     if (!this.clickOutsideEnabled) {
       return;
@@ -155,7 +132,6 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
 
     this._ngZone.run(() => this.clickOutside.emit(ev));
   }
-
 
   private _initClickOutsideListener() {
     this._ngZone.runOutsideAngular(() => {
@@ -178,18 +154,6 @@ export class NgClickOutsideDirective implements OnChanges, OnDestroy {
   private _removeAttachOutsideOnClickListener() {
     this._ngZone.runOutsideAngular(() => {
       this._events.forEach(e => this._el.nativeElement.removeEventListener(e, this._initOnClickBody));
-    });
-  }
-
-  private _initWindowBlurListener() {
-    this._ngZone.runOutsideAngular(() => {
-      this.document.defaultView?.addEventListener('blur', this._onWindowBlur);
-    });
-  }
-
-  private _removeWindowBlurListener() {
-    this._ngZone.runOutsideAngular(() => {
-      this.document.defaultView?.removeEventListener('blur', this._onWindowBlur);
     });
   }
 }

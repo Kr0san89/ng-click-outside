@@ -53,6 +53,6 @@ describe('NgClickOutsideExcludeDirective', () => {
     button3.nativeElement.click();
     expect(component.clickButton3).toBe(1);
     expect(component.clickButton2).toBe(0);
-    expect(component.clickOutsideButton2).toBe(0);  });
-
+    expect(component.clickOutsideButton2).toBe(0);
+  });
 });
