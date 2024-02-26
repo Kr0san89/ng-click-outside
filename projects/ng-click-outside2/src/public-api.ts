@@ -4,3 +4,4 @@
 
 export * from './lib/ng-click-outside.directive';
 export * from './lib/ng-click-outside-exclude.directive';
+export * from './lib/ng-click-outside-emit-on-blur.directive';

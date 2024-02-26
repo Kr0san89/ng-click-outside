@@ -1,10 +1,11 @@
 <div
   (click)="onClick($event)"
   (clickOutside)="onClickedOutside($event)"
+  (blurWindow)="onClickedOutside($event)"
   [attachOutsideOnClick]="attachOutsideOnClick"
   [clickOutsideEnabled]="enabled"
   [clickOutsideExclude]="'.foo'"
-  [emitOnBlur]="true">
+  clickOutsideEmitOnBlur>
   <p>Clicked inside: {{countInside}}</p>
   <p>Clicked outside: {{countOutside}}</p>
 
