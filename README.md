@@ -35,21 +35,21 @@ npm install --save ng-click-outside2
 | 14,15,16 | 11.x.x  | `ng-click-outside2@^11.0.0` |
 | 16,17    | 12.x.x  | `ng-click-outside2@^12.0.0` |
 | 17       | 13.x.x  | `ng-click-outside2@^13.0.0` |
+| 17       | 14.x.x  | `ng-click-outside2@^14.0.0` |
+| 17       | 15.x.x  | `ng-click-outside2@^15.0.0` |
 
 If you use Angular <= 12 please use the original package. https://www.npmjs.com/package/ng-click-outside
 
-
-
 ### Options
 
-| Property name | Type    | Default   | Description                                                                                                                                                                                                                                       |
-| ------------- |---------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `attachOutsideOnClick` | boolean | `false`   | By default, the outside click event handler is automatically attached. Explicitely setting this to `true` sets the handler after the element is clicked. The outside click event handler will then be removed after a click outside has occurred. |
-| `clickOutsideEnabled` | boolean | `true`    | Enables directive.                                                                                                                                                                                                                                |
-| `clickOutsideEvents` | string  | `'click'` | A comma-separated list of events to cause the trigger. For example, for additional mobile support: `[clickOutsideEvents]="'click,touchstart'"`.                                                                                                   |
-| `delayClickOutsideInit` | boolean | `false`   | Delays the initialization of the click outside handler. This may help for items that are conditionally shown ([see issue #13](https://github.com/arkon/ng-click-outside/issues/13)).                                                              |
-| `clickOutsideEmitOnBlur` | -       | -         | If enabled, emits an `blurWindow` event when user clicks outside of applications' window while it's visible. Especially useful if page contains iframes. (Import `NgClickOutsideEmitOnBlurDirective`)                                                                                |
-| `clickOutsideExclude` | string  |           | A comma-separated string of DOM element queries to exclude when clicking outside of the element. (Import NgClickOutsideExcludeDirective) For example: `[clickOutsideExclude]="'button,.btn-primary'"`.                                            |
+| Property name | Type    | Default   | Description                                                                                                                                                                                                                                                                                        |
+| ------------- |---------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `attachOutsideOnClick` | boolean | `false`   | By default, the outside click event handler is automatically attached. Explicitely setting this to `true` sets the handler after the element is clicked. The outside click event handler will then be removed after a click outside has occurred. (Import: `NgClickOutsideAttachOutsideDirective`) |
+| `clickOutsideEnabled` | boolean | `true`    | Enables directive.                                                                                                                                                                                                                                                                                 |
+| `clickOutsideEvents` | string  | `'click'` | A comma-separated list of events to cause the trigger. For example, for additional mobile support: `[clickOutsideEvents]="'click,touchstart'"`.                                                                                                                                                    |
+| `delayClickOutsideInit` | boolean | `false`   | Delays the initialization of the click outside handler. This may help for items that are conditionally shown ([see issue #13](https://github.com/arkon/ng-click-outside/issues/13)). (Import `NgClickOutsideDelayOutsideDirective`)                                                                                                     |
+| `clickOutsideEmitOnBlur` | -       | -         | If enabled, emits an `blurWindow` event when user clicks outside of applications' window while it's visible. Especially useful if page contains iframes. (Import `NgClickOutsideEmitOnBlurDirective`)                                                                                              |
+| `clickOutsideExclude` | string  |           | A comma-separated string of DOM element queries to exclude when clicking outside of the element. (Import NgClickOutsideExcludeDirective) For example: `[clickOutsideExclude]="'button,.btn-primary'"`.                                                                                             |
 
 ## Example Usage
 

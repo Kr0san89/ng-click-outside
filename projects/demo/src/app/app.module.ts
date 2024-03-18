@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {NgClickOutsideDirective, NgClickOutsideExcludeDirective, NgClickOutsideEmitOnBlurDirective} from "ng-click-outside2";
+import {NgClickOutsideDirective, NgClickOutsideExcludeDirective, NgClickOutsideEmitOnBlurDirective, NgClickOutsideAttachOutsideDirective} from "ng-click-outside2";
 
 
 @NgModule({
@@ -12,6 +12,7 @@ import {NgClickOutsideDirective, NgClickOutsideExcludeDirective, NgClickOutsideE
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     NgClickOutsideDirective,
+    NgClickOutsideAttachOutsideDirective,
     NgClickOutsideExcludeDirective,
     NgClickOutsideEmitOnBlurDirective
   ],
