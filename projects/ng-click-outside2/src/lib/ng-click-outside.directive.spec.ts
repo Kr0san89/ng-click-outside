@@ -12,7 +12,7 @@ import {DOCUMENT} from "@angular/common";
   template: `
     <button id="b-1" (click)="clickButton1 = clickButton1 + 1"></button>
     <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1"
-            (click)="clickButton2 = clickButton2 + 1"   [clickOutsideEnabled]="enabled"
+            (click)="clickButton2 = clickButton2 + 1" [clickOutsideEnabled]="enabled"
     ></button>`
 })
 class TestClickOutsideComponent {

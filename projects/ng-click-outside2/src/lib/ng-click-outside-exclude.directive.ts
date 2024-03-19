@@ -1,4 +1,4 @@
-import {Directive, inject, Inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 
 /**
@@ -21,14 +21,15 @@ export class NgClickOutsideExcludeDirective extends NgClickOutsideExcludeToken {
    * A comma-separated string of DOM element queries to exclude when clicking outside of the element.
    * For example: `[exclude]="'button,.btn-primary'"`.
    */
-  @Input() clickOutsideExclude = '';
+  clickOutsideExclude = input('');
 
   private document: Document = inject(DOCUMENT);
 
   public excludeCheck(): HTMLElement[] {
-    if (this.clickOutsideExclude) {
+    const clickOutsideExclude = this.clickOutsideExclude()
+    if (clickOutsideExclude) {
       try {
-        const nodes = Array.from(this.document.querySelectorAll(this.clickOutsideExclude)) as Array<HTMLElement>;
+        const nodes = Array.from(this.document.querySelectorAll(clickOutsideExclude)) as Array<HTMLElement>;
         if (nodes) {
           return nodes;
         }

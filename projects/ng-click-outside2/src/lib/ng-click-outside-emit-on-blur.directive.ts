@@ -1,4 +1,4 @@
-import {afterNextRender, Directive, EventEmitter, inject, NgZone, OnDestroy, Output} from '@angular/core';
+import {afterNextRender, Directive, inject, NgZone, OnDestroy, output} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 
 /**
@@ -12,7 +12,7 @@ import {DOCUMENT} from "@angular/common";
 export class NgClickOutsideEmitOnBlurDirective implements OnDestroy {
   private _ngZone = inject(NgZone);
   private document = inject<Document>(DOCUMENT);
-  @Output() blurWindow: EventEmitter<Event> = new EventEmitter<Event>();
+  blurWindow = output<Event>();
 
   constructor() {
     this._onWindowBlur = this._onWindowBlur.bind(this);

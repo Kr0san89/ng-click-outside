@@ -3,12 +3,11 @@ import {
   booleanAttribute,
   Directive,
   ElementRef,
-  EventEmitter,
   inject,
-  Input,
+  input,
   NgZone,
   OnDestroy,
-  Output,
+  output,
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {NgClickOutsideExcludeToken} from "./ng-click-outside-exclude.directive";
@@ -40,21 +39,21 @@ export class NgClickOutsideDirective implements OnDestroy {
   /**
    * Enables directive.
    */
-  @Input({transform: booleanAttribute}) clickOutsideEnabled = true;
+  clickOutsideEnabled = input(true, {transform: booleanAttribute});
 
   /**
    * A comma-separated list of events to cause the trigger.
    * ### For example, for additional mobile support:
    * `[clickOutsideEvents]="'click,touchstart'"`
    */
-  @Input({
+  clickOutsideEvents = input(['click'], {
     transform: arrayAttribute
-  }) clickOutsideEvents = ['click'];
+  });
 
   /**
    * Outside Click Event
    */
-  @Output() clickOutside: EventEmitter<Event> = new EventEmitter<Event>();
+  clickOutside = output<Event>();
 
   excludeDirective = inject(NgClickOutsideExcludeToken, {host: true, optional: true});
   protected _el = inject(ElementRef);
@@ -85,18 +84,18 @@ export class NgClickOutsideDirective implements OnDestroy {
 
   protected _initClickOutsideListener() {
     this._ngZone.runOutsideAngular(() => {
-      this.clickOutsideEvents.forEach(e => this.document.addEventListener(e, this._onClickBody));
+      this.clickOutsideEvents().forEach(e => this.document.addEventListener(e, this._onClickBody));
     });
   }
 
   protected _removeClickOutsideListener() {
     this._ngZone.runOutsideAngular(() => {
-      this.clickOutsideEvents.forEach(e => this.document.removeEventListener(e, this._onClickBody));
+      this.clickOutsideEvents().forEach(e => this.document.removeEventListener(e, this._onClickBody));
     });
   }
 
   private _onClickBody(ev: Event) {
-    if (!this.clickOutsideEnabled) {
+    if (!this.clickOutsideEnabled()) {
       return;
     }
 
