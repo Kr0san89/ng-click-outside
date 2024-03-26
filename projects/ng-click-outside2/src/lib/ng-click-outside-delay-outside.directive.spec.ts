@@ -44,7 +44,8 @@ describe('NgClickOutsideDirective', () => {
     button1.nativeElement.click();
     expect(component.clickButton1).toBe(1);
     expect(component.clickButton2).toBe(0);
-    expect(component.clickOutsideButton2).toBe(1);
+    // 0 as setTimout function content will not be triggered yet and click outside is not detected
+    expect(component.clickOutsideButton2).toBe(0);
   });
 });
 
