@@ -14,7 +14,7 @@ import {NgClickOutsideExcludeToken} from "./ng-click-outside-exclude.directive";
 import {arrayAttribute} from "./array-attribute";
 
 /**
- * Directove to detect clicks outside of the current element
+ * Directive to detect clicks outside of the current element
  *
  * ```typescript
  * @Component({

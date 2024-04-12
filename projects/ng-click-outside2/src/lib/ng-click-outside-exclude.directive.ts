@@ -8,6 +8,9 @@ export abstract class NgClickOutsideExcludeToken {
   abstract isExclude(target: any): boolean;
 }
 
+/**
+ * Directive to exclude elements from the click-outside
+ */
 @Directive({
   selector: '[clickOutsideExclude]',
   standalone: true,

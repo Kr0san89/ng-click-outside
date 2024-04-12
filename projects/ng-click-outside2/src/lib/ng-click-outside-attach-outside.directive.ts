@@ -1,6 +1,10 @@
 import {booleanAttribute, Directive, effect, input, OnDestroy} from '@angular/core';
 import {NgClickOutsideDirective} from "./ng-click-outside.directive";
 
+/**
+ * Directive only starts after a single click and the outside click event handler
+ * will then be removed after a click outside has occurred.
+ */
 @Directive({
   selector: '[clickOutside][attachOutsideOnClick]',
   standalone: true
