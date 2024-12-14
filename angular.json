@@ -76,12 +76,7 @@
               "projects/demo/src/styles.scss"
             ],
             "scripts": [],
-            "browser": "projects/demo/src/main.ts",
-            "server": "projects/demo/server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "projects/demo/server.ts"
-            }
+            "browser": "projects/demo/src/main.ts"
           },
           "configurations": {
             "production": {

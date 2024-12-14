@@ -16,8 +16,7 @@
     "publish:next:lib": "cd dist/ng-click-outside2 && npm publish --tag alpha",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "serve:ssr:demo": "node dist/demo/server/server.mjs"
+    "lint": "ng lint"
   },
   "private": true,
   "license": "MIT",
@@ -31,7 +30,6 @@
     "@angular/platform-browser-dynamic": "^19.0.3",
     "@angular/platform-server": "^19.0.3",
     "@angular/router": "^19.0.3",
-    "@angular/ssr": "^19.0.4",
     "rxjs": "~7.8.1",
     "tslib": "^2.7.0",
     "zone.js": "~0.15.0"
@@ -45,9 +43,8 @@
     "@angular-eslint/template-parser": "19.0.1",
     "@angular/cli": "^19.0.4",
     "@angular/compiler-cli": "^19.0.3",
-    "@types/express": "^4.17.17",
     "@types/jest": "^29.5.13",
-    "@types/node": "^20.9.1",
+    "@types/node": "^18.18.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
     "browser-sync": "^3.0.0",
