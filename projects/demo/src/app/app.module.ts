@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -10,13 +10,13 @@ import {NgClickOutsideDirective, NgClickOutsideExcludeDirective, NgClickOutsideE
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     NgClickOutsideDirective,
     NgClickOutsideAttachOutsideDirective,
     NgClickOutsideExcludeDirective,
     NgClickOutsideEmitOnBlurDirective
   ],
-  providers: [],
+  providers: [{ provide: APP_ID,  useValue: 'serverApp' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

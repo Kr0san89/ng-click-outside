@@ -6,11 +6,10 @@ import {By} from "@angular/platform-browser";
 
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'test-click',
-  standalone: true,
-  imports: [NgClickOutsideEmitOnBlurDirective],
-  template: `
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'test-click',
+    imports: [NgClickOutsideEmitOnBlurDirective],
+    template: `
     <button id="b-1" (blurWindow)="blurWindowButton1 = blurWindowButton1 + 1"
             (click)="clickButton1 = clickButton1 + 1" clickOutsideEmitOnBlur
     ></button>
