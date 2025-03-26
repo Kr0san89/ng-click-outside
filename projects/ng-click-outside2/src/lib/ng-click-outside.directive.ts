@@ -99,6 +99,10 @@ export class NgClickOutsideDirective implements OnDestroy {
       return;
     }
 
+    if (ev.target instanceof HTMLElement && !ev.target.isConnected) {
+      return;
+    }
+
     if (!this._el.nativeElement.contains(ev.target) && !this.excludeDirective?.isExclude(ev.target)) {
       this._emit(ev);
     }
