@@ -19,9 +19,9 @@ export class NgClickOutsideDelayOutsideDirective extends NgClickOutsideDirective
 
   protected override _initOnClickBody() {
     if (this.delayClickOutsideInit()) {
-      setTimeout(this._initClickOutsideListener.bind(this));
+      setTimeout(super.initListener.bind(this));
     } else {
-      this._initClickOutsideListener();
+      super.initListener();
     }
   }
 }

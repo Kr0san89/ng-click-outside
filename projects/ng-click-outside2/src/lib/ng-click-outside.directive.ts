@@ -59,6 +59,8 @@ export class NgClickOutsideDirective implements OnDestroy {
   protected _el = inject(ElementRef);
   protected _ngZone = inject(NgZone);
   private document = inject<Document>(DOCUMENT);
+  lastRemoved?: Node[];
+  mutationObserver?: MutationObserver;
 
   constructor() {
     this._initOnClickBody = this._initOnClickBody.bind(this);
@@ -68,6 +70,7 @@ export class NgClickOutsideDirective implements OnDestroy {
 
   ngOnDestroy() {
     this._removeClickOutsideListener();
+    this.mutationObserver?.disconnect();
   }
 
   protected _init() {
@@ -75,11 +78,27 @@ export class NgClickOutsideDirective implements OnDestroy {
   }
 
   protected _initOnClickBody() {
-    this._initClickOutsideListener();
+    this.initListener();
   }
 
   protected _emit(ev: Event) {
     this._ngZone.run(() => this.clickOutside.emit(ev));
+  }
+
+  protected initListener() {
+    this.initMutationObserver();
+    this._initClickOutsideListener();
+  }
+
+  private initMutationObserver() {
+    this.mutationObserver = new MutationObserver((mutationList) => {
+      this.lastRemoved = mutationList.flatMap(list => Array.from((list.removedNodes as any).values()));
+    });
+
+    this.mutationObserver.observe(this._el.nativeElement, {
+      childList: true,
+      subtree: true,
+    });
   }
 
   protected _initClickOutsideListener() {
@@ -99,8 +118,17 @@ export class NgClickOutsideDirective implements OnDestroy {
       return;
     }
 
-    if (!this._el.nativeElement.contains(ev.target) && !this.excludeDirective?.isExclude(ev.target)) {
+    if (!this._el.nativeElement.contains(ev.target) && !this.excludeDirective?.isExclude(ev.target) && !this.gotRemoved(ev.target as Node)) {
       this._emit(ev);
     }
+    this.resetLastRemovedList();
+  }
+
+  protected gotRemoved(target: Node, list = this.lastRemoved): boolean {
+    return list?.some(node => node === target || node.contains(target)) ?? false;
+  }
+
+  private resetLastRemovedList() {
+    this.lastRemoved = undefined;
   }
 }
