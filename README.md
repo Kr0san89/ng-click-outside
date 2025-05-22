@@ -52,6 +52,8 @@ If you use Angular <= 12 please use the original package. https://www.npmjs.com/
 | `delayClickOutsideInit` | boolean | `false`   | Delays the initialization of the click outside handler. This may help for items that are conditionally shown ([see issue #13](https://github.com/arkon/ng-click-outside/issues/13)). (Import `NgClickOutsideDelayOutsideDirective`)                                                                                                     |
 | `clickOutsideEmitOnBlur` | -       | -         | If enabled, emits an `blurWindow` event when user clicks outside of applications' window while it's visible. Especially useful if page contains iframes. (Import `NgClickOutsideEmitOnBlurDirective`)                                                                                              |
 | `clickOutsideExclude` | string  |           | A comma-separated string of DOM element queries to exclude when clicking outside of the element. (Import NgClickOutsideExcludeDirective) For example: `[clickOutsideExclude]="'button,.btn-primary'"`.                                                                                             |
+| `clickOutsideHostElementStopPropagationEnabled` | boolean  | false | Enables or disables stopping event propagation on the element. |
+
 
 ## Example Usage
 
