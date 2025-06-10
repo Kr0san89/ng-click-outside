@@ -1,8 +1,7 @@
 import {NgClickOutsideDirective} from "./ng-click-outside.directive";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, DOCUMENT} from "@angular/core";
 import {By} from "@angular/platform-browser";
-import {DOCUMENT} from "@angular/common";
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector

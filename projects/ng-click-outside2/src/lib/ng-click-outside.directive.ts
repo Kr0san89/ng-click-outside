@@ -8,8 +8,8 @@ import {
   NgZone,
   OnDestroy,
   output,
+  DOCUMENT
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
 import {NgClickOutsideExcludeToken} from "./ng-click-outside-exclude.directive";
 import {arrayAttribute} from "./array-attribute";
 

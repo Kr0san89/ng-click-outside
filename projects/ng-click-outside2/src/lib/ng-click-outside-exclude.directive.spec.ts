@@ -1,19 +1,20 @@
-import { NgClickOutsideExcludeDirective } from './ng-click-outside-exclude.directive';
-import {Component, ViewChild} from "@angular/core";
+import {NgClickOutsideExcludeDirective} from './ng-click-outside-exclude.directive';
+import {Component, DOCUMENT, ViewChild} from "@angular/core";
 import {NgClickOutsideDirective} from "./ng-click-outside.directive";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {DOCUMENT} from "@angular/common";
+
 import {By} from "@angular/platform-browser";
 
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'test-click',
-    imports: [NgClickOutsideDirective, NgClickOutsideExcludeDirective],
-    template: `
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'test-click',
+  imports: [NgClickOutsideDirective, NgClickOutsideExcludeDirective],
+  template: `
     <button id="b-1" (click)="clickButton1 = clickButton1 + 1"></button>
-    <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1" [clickOutsideExclude]="'.no-outside-click'"
-            (click)="clickButton2 = clickButton2 + 1"   [clickOutsideEnabled]="enabled"
+    <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1"
+            [clickOutsideExclude]="'.no-outside-click'"
+            (click)="clickButton2 = clickButton2 + 1" [clickOutsideEnabled]="enabled"
     ></button>
     <button id="b-3" (click)="clickButton3 = clickButton3 + 1" class="no-outside-click"></button>
   `

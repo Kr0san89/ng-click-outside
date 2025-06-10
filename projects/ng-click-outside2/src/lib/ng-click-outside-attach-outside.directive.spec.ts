@@ -1,15 +1,13 @@
 import {NgClickOutsideAttachOutsideDirective} from './ng-click-outside-attach-outside.directive';
-import {Component, ViewChild} from "@angular/core";
+import {Component, DOCUMENT, ViewChild} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {DOCUMENT} from "@angular/common";
 import {By} from "@angular/platform-browser";
 
-
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'test-click',
-    imports: [NgClickOutsideAttachOutsideDirective],
-    template: `
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'test-click',
+  imports: [NgClickOutsideAttachOutsideDirective],
+  template: `
     <button id="b-1" (click)="clickButton1 = clickButton1 + 1"></button>
     <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1"
             (click)="clickButton2 = clickButton2 + 1" [clickOutsideEnabled]="enabled" attachOutsideOnClick
