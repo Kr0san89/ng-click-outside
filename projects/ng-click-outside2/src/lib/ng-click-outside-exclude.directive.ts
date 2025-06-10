@@ -1,5 +1,5 @@
-import {Directive, inject, input} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
+import {Directive, DOCUMENT, inject, input} from '@angular/core';
+
 
 /**
  * Optimization for Treeshaking: https://angular.io/guide/lightweight-injection-tokens

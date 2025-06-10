@@ -1,5 +1,4 @@
-import {afterNextRender, Directive, inject, NgZone, OnDestroy, output} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
+import {afterNextRender, Directive, DOCUMENT, inject, NgZone, OnDestroy, output} from '@angular/core';
 
 /**
  *  emits an event when user clicks outside of applications' window while it's visible.
