@@ -1,4 +1,6 @@
 name: CI Angular
+permissions:
+  contents: read
 
 on:
   push:

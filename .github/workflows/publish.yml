@@ -1,4 +1,6 @@
 name: Publish NPM
+permissions:
+  contents: read
 
 on:
   release:

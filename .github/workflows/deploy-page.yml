@@ -1,4 +1,7 @@
 name: Deploy Demo App
+permissions:
+  contents: read
+  pages: write
 
 on:
   push:
