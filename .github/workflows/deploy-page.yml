@@ -1,6 +1,6 @@
 name: Deploy Demo App
 permissions:
-  contents: read
+  contents: write
   pages: write
 
 on:
