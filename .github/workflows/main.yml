@@ -12,16 +12,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [24.x]
-
     steps:
     - uses: actions/checkout@v4
 
     - uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '24.x'
 
     - name: Install Dependencies
       run: npm ci

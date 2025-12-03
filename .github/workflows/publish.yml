@@ -1,5 +1,6 @@
 name: Publish NPM
 permissions:
+  id-token: write
   contents: read
 
 on:
@@ -11,12 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
-        node-version: '22.x'
+        node-version: '24.x'
         registry-url: "https://registry.npmjs.org"
 
     - name: Install Dependencies
@@ -27,5 +27,3 @@ jobs:
 
     - name: Publish
       run: cd dist/ng-click-outside2 && npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM }}
