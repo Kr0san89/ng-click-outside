@@ -1,12 +1,13 @@
 import {NgClickOutsideDirective} from "./ng-click-outside.directive";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Component, ViewChild, DOCUMENT} from "@angular/core";
+import {Component, ViewChild, DOCUMENT, ChangeDetectionStrategy} from "@angular/core";
 import {By} from "@angular/platform-browser";
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'test-click',
     imports: [NgClickOutsideDirective],
+    changeDetection: ChangeDetectionStrategy.Eager,
     template: `
     <button id="b-1" (click)="clickButton1 = clickButton1 + 1"></button>
     <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1"

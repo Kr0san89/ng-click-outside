@@ -1,13 +1,14 @@
 import {NgClickOutsideEmitOnBlurDirective} from './ng-click-outside-emit-on-blur.directive';
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {Component, DOCUMENT, ViewChild} from "@angular/core";
+import {Component, DOCUMENT, ViewChild, ChangeDetectionStrategy} from "@angular/core";
 import {By} from "@angular/platform-browser";
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'test-click',
   imports: [NgClickOutsideEmitOnBlurDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button id="b-1" (blurWindow)="blurWindowButton1 = blurWindowButton1 + 1"
             (click)="clickButton1 = clickButton1 + 1" clickOutsideEmitOnBlur
