@@ -3,6 +3,7 @@ export default {
   displayName: 'ng-click-outside2',
   preset: '../../jest.preset.js',
   roots: ['<rootDir>/src/'],
+  testMatch: ['**/*.spec.ts'],
   setupFilesAfterEnv: ['<rootDir>/src/test.ts'],
   testEnvironment: 'jsdom',
   transform: {

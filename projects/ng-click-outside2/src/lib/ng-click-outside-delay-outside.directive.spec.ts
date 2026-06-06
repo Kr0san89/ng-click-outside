@@ -1,4 +1,4 @@
-import {Component, DOCUMENT, ViewChild} from "@angular/core";
+import {Component, DOCUMENT, ViewChild, ChangeDetectionStrategy} from "@angular/core";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NgClickOutsideDelayOutsideDirective} from "./ng-click-outside-delay-outside.directive";
 import {By} from "@angular/platform-browser";
@@ -7,6 +7,7 @@ import {By} from "@angular/platform-browser";
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'test-click',
   imports: [NgClickOutsideDelayOutsideDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button id="b-1" (click)="clickButton1 = clickButton1 + 1"></button>
     <button id="b-2" (clickOutside)="clickOutsideButton2 = clickOutsideButton2 + 1"
