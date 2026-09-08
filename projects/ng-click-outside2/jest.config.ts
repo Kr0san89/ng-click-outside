@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'ng-click-outside2',
   preset: '../../jest.preset.js',

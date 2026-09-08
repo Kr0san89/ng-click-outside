@@ -5,7 +5,7 @@ import {Directive, DOCUMENT, inject, input} from '@angular/core';
  * Optimization for Treeshaking: https://angular.io/guide/lightweight-injection-tokens
  */
 export abstract class NgClickOutsideExcludeToken {
-  abstract isExclude(target: any): boolean;
+  abstract isExclude(target: EventTarget | null): boolean;
 }
 
 /**
@@ -43,9 +43,13 @@ export class NgClickOutsideExcludeDirective extends NgClickOutsideExcludeToken {
     return [];
   }
 
-  public isExclude(target: any): boolean {
+  public isExclude(target: EventTarget | null): boolean {
+    if (!(target instanceof Node)) {
+      return false;
+    }
+
     const nodesExcluded = this.excludeCheck();
-    for (let excludedNode of nodesExcluded) {
+    for (const excludedNode of nodesExcluded) {
       if (excludedNode.contains(target)) {
         return true;
       }
