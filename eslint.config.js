@@ -13,11 +13,14 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      // This is a directive library, not an app: its public selectors (`clickOutside`,
+      // `clickOutsideExclude`, ...) intentionally carry no "app" prefix, so the prefix
+      // check is disabled rather than enforced.
       "@angular-eslint/directive-selector": [
         "error",
         {
           type: "attribute",
-          prefix: "app",
+          prefix: [],
           style: "camelCase",
         },
       ],
@@ -29,6 +32,9 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      // Test host components and the demo app deliberately opt out of OnPush so plain
+      // property mutations in templates are picked up without manual markForCheck calls.
+      "@angular-eslint/prefer-on-push-component-change-detection": "off",
     },
   },
   {

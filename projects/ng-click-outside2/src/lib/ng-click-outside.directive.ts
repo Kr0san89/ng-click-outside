@@ -92,7 +92,7 @@ export class NgClickOutsideDirective implements OnDestroy {
 
   private initMutationObserver() {
     this.mutationObserver = new MutationObserver((mutationList) => {
-      this.lastRemoved = mutationList.flatMap(list => Array.from((list.removedNodes as any).values()));
+      this.lastRemoved = mutationList.flatMap(list => Array.from(list.removedNodes));
     });
 
     this.mutationObserver.observe(this._el.nativeElement, {
