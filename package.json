@@ -53,10 +53,12 @@
     "@angular-eslint/template-parser": "22.5.0",
     "@angular/cli": "^22.1.7",
     "@angular/compiler-cli": "^22.1.5",
+    "@eslint/js": "^10.0.1",
     "@types/jest": "^29.5.13",
     "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.70.0",
     "@typescript-eslint/parser": "^8.70.0",
+    "angular-eslint": "22.5.0",
     "browser-sync": "^3.0.0",
     "eslint": "^10.10.0",
     "jest": "^30.4.2",
@@ -64,6 +66,7 @@
     "jest-preset-angular": "^16.1.5",
     "ng-packagr": "^22.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "typescript-eslint": "8.70.0"
   }
 }
