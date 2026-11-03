@@ -21,27 +21,27 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@angular/animations": "^22.1.5",
-    "@angular/common": "^22.1.5",
-    "@angular/compiler": "^22.1.5",
-    "@angular/core": "^22.1.5",
-    "@angular/forms": "^22.1.5",
-    "@angular/platform-browser": "^22.1.5",
-    "@angular/platform-browser-dynamic": "^22.1.5",
-    "@angular/platform-server": "^22.1.5",
-    "@angular/router": "^22.1.5",
+    "@angular/animations": "^22.2.4",
+    "@angular/common": "^22.2.4",
+    "@angular/compiler": "^22.2.4",
+    "@angular/core": "^22.2.4",
+    "@angular/forms": "^22.2.4",
+    "@angular/platform-browser": "^22.2.4",
+    "@angular/platform-browser-dynamic": "^22.2.4",
+    "@angular/platform-server": "^22.2.4",
+    "@angular/router": "^22.2.4",
     "rxjs": "~7.8.2",
     "tslib": "^2.7.0",
     "zone.js": "~0.15.0"
   },
   "overrides": {
     "jest-preset-angular": {
-      "@angular/compiler": "~22.1.0",
-      "@angular/compiler-cli": "~22.1.0",
-      "@angular/common": "~22.1.0",
-      "@angular/platform-browser-dynamic": "~22.1.0",
-      "@angular/platform-browser": "~22.1.0",
-      "@angular/core": "~22.1.0"
+      "@angular/compiler": "~22.2.0",
+      "@angular/compiler-cli": "~22.2.0",
+      "@angular/common": "~22.2.0",
+      "@angular/platform-browser-dynamic": "~22.2.0",
+      "@angular/platform-browser": "~22.2.0",
+      "@angular/core": "~22.2.0"
     }
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "@angular-eslint/schematics": "22.5.0",
     "@angular-eslint/template-parser": "22.5.0",
     "@angular/cli": "^22.2.3",
-    "@angular/compiler-cli": "^22.1.5",
+    "@angular/compiler-cli": "^22.2.4",
     "@eslint/js": "^10.0.1",
     "@types/jest": "^29.5.13",
     "@types/node": "^24.10.1",
