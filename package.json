@@ -34,16 +34,6 @@
     "tslib": "^2.7.0",
     "zone.js": "~0.15.0"
   },
-  "overrides": {
-    "jest-preset-angular": {
-      "@angular/compiler": "~22.2.0",
-      "@angular/compiler-cli": "~22.2.0",
-      "@angular/common": "~22.2.0",
-      "@angular/platform-browser-dynamic": "~22.2.0",
-      "@angular/platform-browser": "~22.2.0",
-      "@angular/core": "~22.2.0"
-    }
-  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.1.7",
     "@angular-eslint/builder": "22.5.0",
